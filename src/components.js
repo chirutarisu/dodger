@@ -1,4 +1,4 @@
-// An "Actor" is an entity that is drawn in 2D on canvas
+// An "Actor" is an entity that is drawn in 2D
 Crafty.c('Actor', {
 	init: function() {
 		this.requires('2D, Canvas');
@@ -8,18 +8,21 @@ Crafty.c('Actor', {
 // This is the player-controlled character
 Crafty.c('PlayerCharacter', {
 	init: function() {
-		this.requires('Actor, Color, Draggable, Collision')
+		this.requires('Actor, Color, Mouse, Collision')
 		.color('#23C8F1')
 		.attr({ w: 20, h: 20 })
 		.onHit('Asteroid', this.kill)
-		.bind("StopDrag", function() {
-			this.startDrag();
+		.bind("EnterFrame", function() {
+			this.x = Crafty.mousePos.x;
+			this.y = Crafty.mousePos.y;
 		});
+		/*.bind("StopDrag", function() {
+			this.startDrag();
+		});*/
 	},
 
 	kill: function() {
 		this.destroy();
-		this.disableDrag();
 		Crafty.trigger('PlayerDied', this);
 	}
 });
