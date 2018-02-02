@@ -12,8 +12,6 @@ Crafty.scene('Game', function()
 	var player = Crafty.e('PlayerCharacter')
 	player.x = Game.width / 2;
 	player.y = Game.height / 2;
-	player.enableDrag();
-	player.startDrag();
 
 	// spawn an asteroid every 2 seconds
 	var dt = 0;
