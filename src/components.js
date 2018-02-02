@@ -16,9 +16,6 @@ Crafty.c('PlayerCharacter', {
 			this.x = Crafty.mousePos.x;
 			this.y = Crafty.mousePos.y;
 		});
-		/*.bind("StopDrag", function() {
-			this.startDrag();
-		});*/
 	},
 
 	kill: function() {
